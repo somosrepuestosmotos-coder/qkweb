@@ -71,17 +71,37 @@
       display: flex; align-items: center; justify-content: space-between;
       position: sticky; top: 0; z-index: 1000;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      flex-wrap: wrap;
     }
 
     header img { height: 50px; margin-right: 10px; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
     nav a {
       color: var(--blanco-puro);
-      margin: 0 1rem;
+      margin: 0 0.5rem;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s ease;
+      white-space: nowrap;
     }
     nav a:hover { color: var(--rojo-energia); }
+
+    @media (max-width: 600px) {
+      nav {
+        width: 100%;
+        justify-content: center;
+      }
+      nav a {
+        display: inline-block;
+        margin: 0.3rem 0.5rem;
+        font-size: 0.95rem;
+      }
+    }
 
     /* Hero */
     .hero {
@@ -267,6 +287,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Loader -->
   <div id="loader">
@@ -342,7 +363,7 @@
     <p>© 2025 QUIANLUJ KAIQI Colombia S.A.S. | Confianza, Eficiencia y Tranquilidad | <a href="https://somosrepuestosmotos-coder.github.io/web/" target="_blank">Una Empresa del Ecosistema SRM</a>.</p>
   </footer>
 
-  <!-- Modal sin texto -->
+  <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <button class="close-btn" id="closeModal">Cerrar</button>
@@ -350,21 +371,16 @@
   </div>
 
   <script>
-    // Loader
     window.addEventListener('load', () => {
       document.getElementById('loader').style.display = 'none';
     });
 
-    // Aparición progresiva
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.2 });
     sections.forEach(section => observer.observe(section));
 
-    // Modal
     const modal = document.getElementById('modal');
     const openModal = document.getElementById('openModal');
     const closeModal = document.getElementById('closeModal');
@@ -372,7 +388,6 @@
     closeModal.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 
-    // Scroll centrado
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -383,7 +398,6 @@
       });
     });
 
-    // Carrusel
     const ventanas = document.querySelectorAll('.ventana');
     const puntos = document.querySelectorAll('.punto');
     let indice = 0;
