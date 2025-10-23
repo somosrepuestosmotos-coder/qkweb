@@ -5,7 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QUIANLUJ KAIQI Colombia S.A.S. | Repuestos Garantizados</title>
   <meta name="description" content="Repuestos garantizados y soluciones inmediatas para tu taller. Confianza, eficiencia y tranquilidad en cada pedido." />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="qapple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="qfavicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="qfavicon-16x16.png">
+  <link rel="manifest" href="qsite.webmanifest">
+  <link rel="shortcut icon" href="qfavicon.ico" type="image/x-icon">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:title" content="QUIANLUJ KAIQI Colombia S.A.S. | Repuestos Garantizados">
+  <meta property="og:description" content="Entrega rápida, segura y con respaldo técnico. Repuestos garantizados para tu taller.">
+  <meta property="og:image" content="https://example.com/qandroid-chrome-512x512.png">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QUIANLUJ KAIQI Colombia S.A.S.">
+  <meta name="twitter:description" content="Distribución Inteligente y Consultoría Técnica para tu taller.">
+  <meta name="twitter:image" content="https://example.com/qandroid-chrome-512x512.png">
+
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --azul-acero: #1E3A5F;
@@ -17,9 +38,7 @@
 
     * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Lato', sans-serif;
@@ -32,24 +51,15 @@
     /* Loader */
     #loader {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: var(--azul-acero);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       z-index: 2000;
       animation: fadeOut 1s ease 2.5s forwards;
     }
 
-    #loader img {
-      width: 100px;
-      height: auto;
-      animation: spin 2s linear infinite;
-    }
-
+    #loader img { width: 100px; animation: spin 2s linear infinite; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
 
@@ -58,20 +68,12 @@
       background-color: var(--azul-acero);
       color: var(--blanco-puro);
       padding: 1.2rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    header img {
-      height: 50px;
-      margin-right: 10px;
-      vertical-align: middle;
-    }
-
+    header img { height: 50px; margin-right: 10px; }
     nav a {
       color: var(--blanco-puro);
       margin: 0 1rem;
@@ -79,7 +81,6 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
-
     nav a:hover { color: var(--rojo-energia); }
 
     /* Hero */
@@ -113,15 +114,12 @@
       background-color: var(--rojo-energia);
       color: var(--blanco-puro);
       padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
+      border: none; border-radius: 8px;
+      font-size: 1rem; cursor: pointer;
       text-transform: uppercase;
       font-weight: 700;
       transition: transform 0.2s, background 0.3s;
     }
-
     .cta:hover { background-color: #b3171d; transform: scale(1.05); }
 
     section {
@@ -130,13 +128,9 @@
       transition: opacity 1s ease, transform 1s ease;
       padding: 6rem 2rem;
       text-align: center;
-      scroll-margin-top: 100px; /* Compensa la altura del header */
+      scroll-margin-top: 100px;
     }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.visible { opacity: 1; transform: translateY(0); }
 
     h3 {
       font-family: 'Montserrat', sans-serif;
@@ -144,31 +138,120 @@
       color: var(--azul-acero);
     }
 
-    .servicios {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    /* Carrusel de Ventanas */
+    .ventanas {
+      position: relative;
+      max-width: 700px;
+      margin: 2rem auto 3rem;
+      overflow: hidden;
+      height: 220px;
     }
 
-    .card {
-      background-color: var(--blanco-puro);
+    .ventana {
+      position: absolute;
+      top: 0; left: 100%;
+      width: 100%;
+      background: var(--blanco-puro);
       border: 1px solid var(--gris-titanio);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+      box-shadow: 0 6px 15px rgba(30,58,95,0.2);
+      opacity: 0;
+      transform: translateX(50px) scale(0.98);
+      transition: all 1s ease;
     }
 
-    .card:hover { transform: translateY(-8px); }
+    .ventana.active {
+      left: 0;
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      box-shadow: 0 8px 20px rgba(30,58,95,0.35);
+      animation: glowIn 1.5s ease;
+    }
 
-    /* Catálogo Digital */
+    .ventana h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--azul-acero);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .ventana p {
+      color: var(--gris-titanio);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      animation: fadeText 1.5s ease forwards;
+    }
+
+    @keyframes glowIn {
+      from { box-shadow: 0 0 0 rgba(225,29,39,0); }
+      to { box-shadow: 0 0 20px rgba(225,29,39,0.2); }
+    }
+
+    @keyframes pulseGlow {
+      0%,100% { text-shadow: 0 0 5px rgba(225,29,39,0.3); }
+      50% { text-shadow: 0 0 10px rgba(225,29,39,0.5); }
+    }
+
+    @keyframes fadeText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Indicadores dinámicos */
+    .indicadores {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+    }
+
+    .punto {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gris-titanio);
+      position: relative;
+      transition: all 0.6s ease;
+    }
+
+    .punto::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 100%;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--azul-acero), transparent);
+      transform: translateY(-50%);
+      opacity: 0.3;
+      transition: all 0.6s ease;
+    }
+
+    .punto:last-child::after { display: none; }
+
+    .punto.active {
+      background: var(--rojo-energia);
+      transform: scale(1.3);
+      box-shadow: 0 0 10px rgba(225,29,39,0.5);
+    }
+
+    .punto.active::after {
+      width: 40px;
+      background: linear-gradient(90deg, var(--rojo-energia), var(--azul-acero));
+      opacity: 0.7;
+    }
+
+    /* Catálogo */
     #catalogo {
       background: url('freepik__-prompt-experto-logotipo-kaiqi-prompt-versin-exten__80001.png') center/cover;
       color: var(--blanco-puro);
       position: relative;
     }
-
     #catalogo::before {
       content: '';
       position: absolute;
@@ -176,25 +259,18 @@
       background: rgba(0,0,0,0.55);
       z-index: 1;
     }
-
     #catalogo h3, #catalogo p, #catalogo button {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
     }
 
     /* Modal */
     .modal {
       display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
+      justify-content: center; align-items: center;
     }
-
     .modal-content {
       background: var(--blanco-puro);
       padding: 2rem;
@@ -203,7 +279,6 @@
       text-align: center;
       animation: fadeIn 0.5s ease;
     }
-
     .close-btn {
       background: var(--rojo-energia);
       color: var(--blanco-puro);
@@ -252,10 +327,24 @@
 
   <section id="servicios">
     <h3>Servicios y Beneficios</h3>
-    <div class="servicios">
-      <div class="card"><h4>Distribución Inteligente</h4><p>Entrega rápida, segura y con respaldo técnico.</p></div>
-      <div class="card"><h4>Alianzas Comerciales</h4><p>Programas de fidelización y soporte a distribuidores.</p></div>
-      <div class="card"><h4>Consultoría Técnica</h4><p>Optimiza tu inventario con asesoría profesional.</p></div>
+    <div class="ventanas">
+      <div class="ventana active">
+        <h4>Distribución Inteligente</h4>
+        <p>Entrega rápida, segura y con respaldo técnico.</p>
+      </div>
+      <div class="ventana">
+        <h4>Alianzas Comerciales</h4>
+        <p>Programas de fidelización y soporte a distribuidores.</p>
+      </div>
+      <div class="ventana">
+        <h4>Consultoría Técnica</h4>
+        <p>Optimiza tu inventario con asesoría profesional.</p>
+      </div>
+    </div>
+    <div class="indicadores">
+      <div class="punto active"></div>
+      <div class="punto"></div>
+      <div class="punto"></div>
     </div>
   </section>
 
@@ -296,35 +385,48 @@
       document.getElementById('loader').style.display = 'none';
     });
 
-    // Aparición de secciones
+    // Aparición progresiva
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-
     sections.forEach(section => observer.observe(section));
 
     // Modal
     const modal = document.getElementById('modal');
     const openModal = document.getElementById('openModal');
     const closeModal = document.getElementById('closeModal');
-
     openModal.addEventListener('click', () => modal.style.display = 'flex');
     closeModal.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 
-    // Scroll centrado ajustado
+    // Scroll centrado
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        const yOffset = -80; // Ajuste para que el título quede centrado visible
+        const yOffset = -80;
         const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       });
     });
+
+    // Carrusel con indicadores animados
+    const ventanas = document.querySelectorAll('.ventana');
+    const puntos = document.querySelectorAll('.punto');
+    let indice = 0;
+
+    function cambiarVentana() {
+      ventanas[indice].classList.remove('active');
+      puntos[indice].classList.remove('active');
+      indice = (indice + 1) % ventanas.length;
+      ventanas[indice].classList.add('active');
+      puntos[indice].classList.add('active');
+    }
+
+    setInterval(cambiarVentana, 6000);
   </script>
 </body>
 </html>
