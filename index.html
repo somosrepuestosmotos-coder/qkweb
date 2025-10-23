@@ -246,6 +246,20 @@
       opacity: 0.7;
     }
 
+    /* Interacción con hover */
+    .punto:hover {
+      transform: scale(1.5);
+      box-shadow: 0 0 20px rgba(225,29,39,0.6), 0 0 40px rgba(30,58,95,0.3);
+      background: radial-gradient(circle, var(--rojo-energia) 40%, var(--azul-acero));
+      cursor: pointer;
+    }
+
+    .punto:hover::after {
+      width: 50px;
+      opacity: 0.9;
+      background: linear-gradient(90deg, var(--rojo-energia), var(--azul-acero));
+    }
+
     /* Catálogo */
     #catalogo {
       background: url('freepik__-prompt-experto-logotipo-kaiqi-prompt-versin-exten__80001.png') center/cover;
