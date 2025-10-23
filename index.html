@@ -122,6 +122,26 @@
     }
     .cta:hover { background-color: #b3171d; transform: scale(1.05); }
 
+    /* Botón con efecto de pulso */
+    .pulse-btn {
+      background-color: var(--azul-acero);
+      color: var(--blanco-puro);
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      animation: pulse 2s infinite;
+      font-weight: bold;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(30,58,95, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(30,58,95, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(30,58,95, 0); }
+    }
+
     section {
       opacity: 0;
       transform: translateY(40px);
@@ -138,7 +158,7 @@
       color: var(--azul-acero);
     }
 
-    /* Carrusel de Ventanas */
+    /* Carrusel */
     .ventanas {
       position: relative;
       max-width: 700px;
@@ -169,95 +189,9 @@
       animation: glowIn 1.5s ease;
     }
 
-    .ventana h4 {
-      font-family: 'Montserrat', sans-serif;
-      color: var(--azul-acero);
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    .ventana p {
-      color: var(--gris-titanio);
-      font-size: 1.05rem;
-      line-height: 1.6;
-      animation: fadeText 1.5s ease forwards;
-    }
-
     @keyframes glowIn {
       from { box-shadow: 0 0 0 rgba(225,29,39,0); }
       to { box-shadow: 0 0 20px rgba(225,29,39,0.2); }
-    }
-
-    @keyframes pulseGlow {
-      0%,100% { text-shadow: 0 0 5px rgba(225,29,39,0.3); }
-      50% { text-shadow: 0 0 10px rgba(225,29,39,0.5); }
-    }
-
-    @keyframes fadeText {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Indicadores dinámicos */
-    .indicadores {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      position: relative;
-      margin-top: 1rem;
-    }
-
-    .punto {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--gris-titanio);
-      position: relative;
-      transition: all 0.6s ease;
-    }
-
-    .punto::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 100%;
-      width: 30px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--azul-acero), transparent);
-      transform: translateY(-50%);
-      opacity: 0.3;
-      transition: all 0.6s ease;
-    }
-
-    .punto:last-child::after { display: none; }
-
-    .punto.active {
-      background: var(--rojo-energia);
-      transform: scale(1.3);
-      box-shadow: 0 0 10px rgba(225,29,39,0.5);
-    }
-
-    .punto.active::after {
-      width: 40px;
-      background: linear-gradient(90deg, var(--rojo-energia), var(--azul-acero));
-      opacity: 0.7;
-    }
-
-    /* Interacción con hover */
-    .punto:hover {
-      transform: scale(1.5);
-      box-shadow: 0 0 20px rgba(225,29,39,0.6), 0 0 40px rgba(30,58,95,0.3);
-      background: radial-gradient(circle, var(--rojo-energia) 40%, var(--azul-acero));
-      cursor: pointer;
-    }
-
-    .punto:hover::after {
-      width: 50px;
-      opacity: 0.9;
-      background: linear-gradient(90deg, var(--rojo-energia), var(--azul-acero));
     }
 
     /* Catálogo */
@@ -310,6 +244,27 @@
       padding: 2rem;
       font-size: 0.9rem;
     }
+
+    footer a {
+      color: var(--blanco-puro);
+      text-decoration: none;
+      position: relative;
+    }
+
+    footer a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: var(--rojo-energia);
+      transition: width 0.3s ease;
+    }
+
+    footer a:hover::after {
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -336,6 +291,8 @@
       <h2>Siempre disponible cuando lo necesitas</h2>
       <p>Repuestos garantizados y soluciones inmediatas para tu taller.</p>
       <button class="cta" id="openModal">Explora tu solución ahora</button>
+      <br>
+      <button class="pulse-btn" onclick="window.location.href='https://somosrepuestosmotos-coder.github.io/srm-frontend-qk/'">🚀 Iniciar Presentación</button>
     </div>
   </section>
 
@@ -377,18 +334,17 @@
   <section id="contacto">
     <h3>Contáctanos</h3>
     <p>¿Tienes dudas o necesitas una cotización? Estamos disponibles 24/7.</p>
-    <button class="cta">Contacta Ahora</button>
+    <a href="https://wa.me/573194200829?text=Hola%20👋,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20repuestos%20Casa%20China." target="_blank"><button class="cta">📱 Casa China</button></a>
+    <a href="https://wa.me/573209147763?text=Hola%20👋,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20repuestos%20Kaiqi%20Parts." target="_blank"><button class="cta" style="margin-top:10px;">📱 Kaiqi Parts</button></a>
   </section>
 
   <footer>
-    <p>© 2025 QUIANLUJ KAIQI Colombia S.A.S. | Confianza, Eficiencia y Tranquilidad</p>
+    <p>© 2025 QUIANLUJ KAIQI Colombia S.A.S. | Confianza, Eficiencia y Tranquilidad | <a href="https://somosrepuestosmotos-coder.github.io/web/" target="_blank">Una Empresa del Ecosistema SRM</a>.</p>
   </footer>
 
-  <!-- Modal -->
+  <!-- Modal sin texto -->
   <div id="modal" class="modal">
     <div class="modal-content">
-      <h3>Bienvenido a QUIANLUJ KAIQI</h3>
-      <p>Tu taller nunca se detiene. Explora soluciones seguras y garantizadas.</p>
       <button class="close-btn" id="closeModal">Cerrar</button>
     </div>
   </div>
@@ -427,11 +383,10 @@
       });
     });
 
-    // Carrusel con indicadores animados
+    // Carrusel
     const ventanas = document.querySelectorAll('.ventana');
     const puntos = document.querySelectorAll('.punto');
     let indice = 0;
-
     function cambiarVentana() {
       ventanas[indice].classList.remove('active');
       puntos[indice].classList.remove('active');
@@ -439,7 +394,6 @@
       ventanas[indice].classList.add('active');
       puntos[indice].classList.add('active');
     }
-
     setInterval(cambiarVentana, 6000);
   </script>
 </body>
